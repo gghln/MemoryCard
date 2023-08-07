@@ -3,11 +3,25 @@ import CreateCard from "./card"
 import './styles/grid.css'
 
 function DisplayGrid (props){
-    const {currentScore, setCurrentScore} = props
+    const {
+        currentScore, 
+        setCurrentScore,
+        bestScore,
+        setBestScore,
+        isClicked,
+        setIsClicked
+    } = props
     
     return(
         <div className="grid-container">
-            <CreateCard currentScore={currentScore} setCurrentScore={setCurrentScore}/>
+            <CreateCard 
+                currentScore={currentScore} 
+                setCurrentScore={setCurrentScore}
+                bestScore={bestScore}
+                setBestScore={setBestScore}
+                isClicked={isClicked}
+                setIsClicked={setIsClicked}
+            />
         </div>
     )
 }
