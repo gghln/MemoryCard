@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react"
 import './styles/card.css'
+import PopUp from "./popup"
 
 function CreateCard(props){
     const {
@@ -13,6 +14,8 @@ function CreateCard(props){
     } = props
     const [Pokemons,setPokemons] = useState([])
     const [storedID,setStoredID] = useState([])
+    const [popUp,setPopUp] = useState(false)
+    const [popUpMsg,setPopUpMsg] = useState('')
     let id;
 
     const shuffleCards = () => {
@@ -42,7 +45,8 @@ function CreateCard(props){
     const gameLogic = (id) => {
         if(!(storedID.includes(id))){
             if(currentScore == '9'){
-                window.alert('YOU WON!!!')
+                setPopUp(true)
+                setPopUpMsg('YOU WON!!!')
                 setStoredID([])
                 window.location.reload()
             }else{
@@ -54,7 +58,8 @@ function CreateCard(props){
             }
         }
         else{
-            window.alert('You Lose!!!')
+            setPopUp(true)
+            setPopUpMsg('YOU LOST!!!')
             setStoredID([])
             setCurrentScore(0)
             shuffleCards()
@@ -86,6 +91,7 @@ function CreateCard(props){
     //Render a card for each item stored in Pokemons Array. Using array.map() method
     return(   
         <>
+        {popUp && <PopUp msg={popUpMsg}/>}
         {Pokemons.map((pokemon,index) => {
             return(
                 <>

@@ -9,7 +9,7 @@
 }
 
 .pokemon-image{
-    transform: scale(0.7);
+    transform: scale(0.9);
 }
 
 .pokemon-name{
@@ -37,6 +37,6 @@
 }
 
 .pokemon-image:hover{
-    transform: scale(1);
+    transform: scale(1.2);
     transition: 0.5s;
 }
