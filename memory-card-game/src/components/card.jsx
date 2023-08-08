@@ -30,14 +30,14 @@ function CreateCard(props){
     }
     
     //Increase Best Score
-    const FindBestScore = () => {
+    const findBestScore = () => {
         if(bestScore <= currentScore){
             setBestScore(currentScore + 1)
         }else{
             setBestScore(bestScore)
         }
     }
-
+    
     // Game Logic
     const gameLogic = (id) => {
         if(!(storedID.includes(id))){
@@ -48,7 +48,7 @@ function CreateCard(props){
             }else{
                 setStoredID([...storedID,id])
                 increaseScore()
-                FindBestScore()
+                findBestScore()
                 shuffleCards()
                 console.log(currentScore)
             }
@@ -88,10 +88,12 @@ function CreateCard(props){
         <>
         {Pokemons.map((pokemon,index) => {
             return(
-                <div className='card' onClick={()=>handleClick(pokemon.pokeId)} key={index}>
-                    <p>{pokemon.pokeName}</p>
-                    <img src={pokemon.pokeIcon} alt={pokemon.pokeName} />
-                </div>
+                <>
+                    <div className='card-front' onClick={()=>handleClick(pokemon.pokeId)} key={index}>
+                        <p className="pokemon-name">{pokemon.pokeName}</p>
+                        <img className="pokemon-image" src={pokemon.pokeIcon} alt={pokemon.pokeName} />
+                    </div>
+                </>           
             )
         })}
         </>       
